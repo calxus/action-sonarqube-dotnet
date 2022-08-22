@@ -6,9 +6,6 @@ inputs:
   sonarProjectKey:
     description: "The key of the SonarQube project"
     required: true
-  sonarProjectName:
-    description: "The name of the SonarQube project"
-    required: true
   sonarHostname:
     description: "The SonarQube server URL. For SonarCloud, skip this setting."
     default: "https://sonarcloud.io"
