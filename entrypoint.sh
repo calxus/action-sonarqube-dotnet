@@ -12,7 +12,6 @@ if [ -z "$SONAR_TOKEN" ]; then
 fi
 
 echo "INPUT_SONARPROJECTKEY: $INPUT_SONARPROJECTKEY"
-echo "INPUT_SONARPROJECTNAME: $INPUT_SONARPROJECTNAME"
 echo "INPUT_SONARHOSTNAME: $INPUT_SONARHOSTNAME"
 
 sonar_begin_cmd="/dotnet-sonarscanner begin /k:\"${INPUT_SONARPROJECTKEY}\" /d:sonar.login=\"${SONAR_TOKEN}\" /d:sonar.host.url=\"${INPUT_SONARHOSTNAME}\""
