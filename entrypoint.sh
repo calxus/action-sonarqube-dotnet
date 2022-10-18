@@ -10,13 +10,12 @@ if [ -z "$SONAR_TOKEN" ]; then
     echo "Environment parameter SONAR_TOKEN is required"
     exit 1
 fi
-if [ -z "$INPUT_NUGETSOURCE" ]; then
-    dotnet nuget add source $NUGET_SOURCE -n adimo
-fi
 
 echo "INPUT_SONARPROJECTKEY: $INPUT_SONARPROJECTKEY"
 echo "INPUT_SONARHOSTNAME: $INPUT_SONARHOSTNAME"
 echo "INPUT_NUGETSOURCE: $INPUT_NUGETSOURCE"
+
+dotnet nuget add source $NUGET_SOURCE -n adimo
 
 sonar_begin_cmd="/dotnet-sonarscanner begin /k:\"${INPUT_SONARPROJECTKEY}\" /d:sonar.login=\"${SONAR_TOKEN}\" /d:sonar.host.url=\"${INPUT_SONARHOSTNAME}\""
 
