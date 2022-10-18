@@ -10,7 +10,7 @@ if [ -z "$SONAR_TOKEN" ]; then
     echo "Environment parameter SONAR_TOKEN is required"
     exit 1
 fi
-if [ -z "$NUGET_SOURCE" ]; then
+if [ -z "$INPUT_NUGETSOURCE" ]; then
     dotnet nuget add source $NUGET_SOURCE -n adimo
 fi
 
