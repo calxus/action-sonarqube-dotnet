@@ -16,6 +16,7 @@ fi
 
 echo "INPUT_SONARPROJECTKEY: $INPUT_SONARPROJECTKEY"
 echo "INPUT_SONARHOSTNAME: $INPUT_SONARHOSTNAME"
+echo "INPUT_NUGETSOURCE: $INPUT_NUGETSOURCE"
 
 sonar_begin_cmd="/dotnet-sonarscanner begin /k:\"${INPUT_SONARPROJECTKEY}\" /d:sonar.login=\"${SONAR_TOKEN}\" /d:sonar.host.url=\"${INPUT_SONARHOSTNAME}\""
 
