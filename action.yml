@@ -10,8 +10,9 @@ inputs:
     description: "The SonarQube server URL. For SonarCloud, skip this setting."
     default: "https://sonarcloud.io"
     required: false
-   nugetSource:
+  nugetSource:
     description: "A custom nuget source"
+    default: "https://api.nuget.org/v3/index.json"
     required: false
 
 runs:
