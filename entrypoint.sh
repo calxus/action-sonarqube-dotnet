@@ -15,6 +15,12 @@ echo "INPUT_SONARPROJECTKEY: $INPUT_SONARPROJECTKEY"
 echo "INPUT_SONARHOSTNAME: $INPUT_SONARHOSTNAME"
 echo "INPUT_NUGETSOURCE: $INPUT_NUGETSOURCE"
 
+dotnet nuget remove source sonarqube || true
+
+if [ ! -z "$INPUT_NUGETSOURCE" ]; then
+    dotnet nuget add source "$INPUT_NUGETSOURCE" -n sonarqube
+fi
+
 sonar_begin_cmd="/dotnet-sonarscanner begin /k:\"${INPUT_SONARPROJECTKEY}\" /d:sonar.login=\"${SONAR_TOKEN}\" /d:sonar.host.url=\"${INPUT_SONARHOSTNAME}\""
 
 sonar_end_cmd="/dotnet-sonarscanner end /d:sonar.login=\"${SONAR_TOKEN}\""
@@ -26,6 +32,10 @@ sh -c "$sonar_begin_cmd"
 
 echo "dotnet_build_cmd: $dotnet_build_cmd"
 sh -c "${dotnet_build_cmd}"
+
+if [ ! -z "$INPUT_NUGETSOURCE" ]; then
+    dotnet nuget remove source sonarqube
+fi
 
 echo "sonar_end_cmd: $sonar_end_cmd"
 sh -c "$sonar_end_cmd"
